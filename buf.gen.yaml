@@ -1,0 +1,18 @@
+version: v2
+managed:
+  enabled: true
+  override:
+    - file_option: go_package_prefix
+      value: github.com/birdayz/buf-local-plugin-vendoring/proto/gen/go
+plugins:
+  - local: 
+      - go
+      - run
+      - google.golang.org/protobuf/cmd/protoc-gen-go@v1.35.2
+    out: proto/gen/go
+    opt: paths=source_relative
+  - local:
+      - "bun"
+      - "x"
+      - "@bufbuild/protoc-gen-es@2.2.2"
+    out: proto/gen/ts
